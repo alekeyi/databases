@@ -8,7 +8,6 @@ module.exports = {
         if (err) {
           cb(err);
         } else {
-          // console.log(res);
           res.send(JSON.stringify(rows));
         }
 
@@ -16,12 +15,12 @@ module.exports = {
       });
     }, // a function which produces all the messages
     post: function() {
-      db.query('SELECT * FROM messages', (err, rows) => {
+      db.query(`INSERT INTO messages (message, user_id) VALUES (${message}, 1)`, (err, rows) => {
         if (err) {
           throw err;
         }
 
-        console.log(`success! these are our rows: \n${rows}`);
+        console.log(`success! these are our rows`);
       });
     } // a function which can be used to insert a message into the database
   },
